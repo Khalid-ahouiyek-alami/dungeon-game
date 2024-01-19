@@ -38,6 +38,41 @@ print('Je zie een deur achter het standbeeld.')
 print('')
 time.sleep(1)
 
+# === [kamer 4.1] === #
+randomitem= random.randint(1,2)
+if randomitem == 1:
+    print('je hebt een schild gekregen je hebt nu een extra punt op je defence')
+    randomitem = 'schild'
+    player_defense += 1
+else:
+    print('je hebt een swaard gekregen je hebt nu een extra punt op je attack')
+    randomitem = 'swaard'
+    playeratack =+ 2
+
+zombie_attack = 2
+zombie_defense = 0
+zombie_health = 3
+print(f'Dapper met je nieuwe {randomitem} loop je de kamer binnen.')
+print('Je loopt tegen een sterke mummy aan.')
+
+zombie_hit_damage = (zombie_attack - player_defense)
+if zombie_hit_damage <= 0:
+    print('Jij hebt een te goede verdedigign voor de zombie, hij kan je geen schade doen.')
+else:
+    zombie_attack_amount = math.ceil(player_health / zombie_hit_damage)
+    
+    player_hit_damage = (playeratack - zombie_defense)
+    player_attack_amount = math.ceil(zombie_health / player_hit_damage)
+
+    if player_attack_amount < zombie_attack_amount:
+        print(f'In {player_attack_amount} rondes versla je de zombie.')
+        print(f'Je health is nu {player_health}.')
+    else:
+        print('Helaas is de zombie te sterk voor je.')
+        print('Game over.')
+        exit()
+print('')
+time.sleep(1)    
 # === [kamer 3] === #✔
 
 
@@ -63,7 +98,7 @@ time.sleep(1)
 
 # === [kamer 4] === #✔
 zombie_attack = 1
-zombie_defense = 0
+zombie_defense = 0  
 zombie_health = 2
 print(f'Dapper met je nieuwe {randomitem} loop je de kamer binnen.')
 print('Je loopt tegen een zombie aan.')
